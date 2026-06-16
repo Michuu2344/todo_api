@@ -2,7 +2,7 @@ from uuid import uuid4, UUID
 from typing import Optional
 from pydantic import BaseModel, Field
 from enum import Enum
-from datetime import datetime
+
 
 class Month(str,Enum):
     january = "january"
@@ -18,11 +18,12 @@ class Month(str,Enum):
     november = "november"
     december = "december"
 class Task(BaseModel):
-    id : Optional[UUID] = Field(default_factory = uuid4())
+    id :int
     name : str
     category: Optional[str]
     description : Optional[str]
     month : Month
+    completed: bool = False
     
 
 
